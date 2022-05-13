@@ -1,10 +1,10 @@
 import { IGoogleSheetKeys } from "../interface/igoogle_sheet_keys";
 import { initialize } from "../google_sheet_service/initialize";
-import { read } from "../google_sheet_service/read";
-import { write } from "../google_sheet_service/write";
+import { IRead, read } from "../google_sheet_service/read";
+import { IWrite, write } from "../google_sheet_service/write";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 
-interface IExecInitialize {
+export interface IExecInitialize {
   google_sheet_id: string;
   google_sheet_keys: IGoogleSheetKeys;
 }
@@ -25,10 +25,7 @@ const googleSheetService = () => {
   };
 
   const uRead = async (
-      document: GoogleSpreadsheet,
-      title: string,
-      offset?: number
-    ) => {
+      {document, title, offset}: IRead) => {
     const params = {
       document,
       title,
@@ -39,7 +36,7 @@ const googleSheetService = () => {
   };
 
   const uWrite = (data: object, path: string) => {
-    const params = {
+    const params: IWrite = {
       path,
       data,
     }

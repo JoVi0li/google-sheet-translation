@@ -1,6 +1,6 @@
 import fs from "fs";
 
-interface IWrite{
+export interface IWrite{
   data: object;
   path: string;
 }

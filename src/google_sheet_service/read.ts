@@ -1,7 +1,7 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 
 
-interface IRead{
+export interface IRead{
   document: GoogleSpreadsheet;
   title: string;
   offset?: number;
